@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>我們的旅行：東京之旅</title>
-    <!-- 引入 Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* 使用 Google Fonts 的思源黑體，確保中文字體顯示良好 */
@@ -21,17 +20,16 @@
     </style>
 </head>
 <body class="antialiased">
-    <!-- 頁面頂部導航列 -->
     <header class="sticky top-0 bg-white shadow-lg z-50">
         <nav class="container mx-auto p-4 flex justify-between items-center">
             <h1 class="text-2xl font-bold text-[#8a5cf6]">我們的旅程</h1>
             <div class="space-x-4 hidden md:block">
                 <a href="#itinerary" class="text-gray-600 hover:text-[#8a5cf6] transition-colors duration-300">行程總覽</a>
                 <a href="#flights" class="text-gray-600 hover:text-[#8a5cf6] transition-colors duration-300">航班資訊</a>
+                <a href="#transportation" class="text-gray-600 hover:text-[#8a5cf6] transition-colors duration-300">交通建議</a>
                 <a href="#attractions" class="text-gray-600 hover:text-[#8a5cf6] transition-colors duration-300">必去景點</a>
                 <a href="#food" class="text-gray-600 hover:text-[#8a5cf6] transition-colors duration-300">美食推薦</a>
             </div>
-            <!-- 手機版導航選單 (可自行擴充) -->
             <div class="md:hidden">
                 <button id="menu-button" class="text-gray-600 focus:outline-none">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
@@ -41,7 +39,6 @@
     </header>
 
     <main class="container mx-auto px-4 py-8">
-        <!-- 主視覺區塊 -->
         <section class="bg-[#d4e6f1] rounded-3xl p-8 mb-12 shadow-xl text-center">
             <h2 class="text-4xl md:text-5xl font-bold text-[#2c3e50] mb-4">
                 東京快樂之旅！
@@ -52,11 +49,9 @@
             <p class="text-lg text-[#555] font-semibold mt-2">2025/08/20 - 2025/08/24</p>
         </section>
 
-        <!-- 航班資訊區塊 -->
         <section id="flights" class="mb-12">
             <h3 class="text-3xl font-bold text-center mb-8 text-[#8a5cf6]">航班資訊</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- 去程航班卡片 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
                     <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">去程</h4>
                     <ul class="text-gray-700 space-y-2">
@@ -65,7 +60,6 @@
                         <li>**抵達:** 東京成田 (11:00)</li>
                     </ul>
                 </div>
-                <!-- 回程航班卡片 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
                     <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">回程</h4>
                     <ul class="text-gray-700 space-y-2">
@@ -77,11 +71,9 @@
             </div>
         </section>
 
-        <!-- 行程總覽區塊 -->
         <section id="itinerary" class="mb-12">
             <h3 class="text-3xl font-bold text-center mb-8 text-[#8a5cf6]">行程總覽</h3>
             <div class="space-y-8">
-                <!-- 第一天 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
                     <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第一天：2025/08/20</h4>
                     <p class="text-gray-700">
@@ -92,7 +84,6 @@
                         **晚上:** 返回飯店休息，結束充實的第一天。
                     </p>
                 </div>
-                <!-- 第二天 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
                     <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第二天：2025/08/21</h4>
                     <p class="text-gray-700">
@@ -102,7 +93,6 @@
                         **晚上:** 在銀座享用晚餐後，搭乘地鐵回飯店休息。
                     </p>
                 </div>
-                <!-- 第三天 -->
                 <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
                     <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第三天：2025/08/22</h4>
                     <p class="text-gray-700">
@@ -110,8 +100,7 @@
                         **交通建議:** 從飯店附近的「上野站」搭乘 **JR京濱東北線** 或 **JR山手線** 到「東京站」，再轉搭 **JR京葉線** 直達「舞濱站」（迪士尼樂園）。
                     </p>
                 </div>
-                 <!-- 第四天 -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
+                 <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
                     <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第四天：2025/08/23</h4>
                     <p class="text-gray-700">
                         **上午:** 前往**新宿**，可以到東京都廳免費觀景台欣賞市區美景。<br>
@@ -121,8 +110,7 @@
                         **晚上:** 在池袋享用晚餐後回飯店休息。
                     </p>
                 </div>
-                 <!-- 第五天 -->
-                <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
+                 <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
                     <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第五天：2025/08/24</h4>
                     <p class="text-gray-700">
                         **上午:** 11:00退房後，前往上野車站周邊的 **阿美橫丁** 逛街，採買零食和伴手禮，感受熱鬧的市場氛圍。<br>
@@ -130,15 +118,57 @@
                         **下午:** 預計下午五點左右搭乘 Skyliner 前往成田機場，準備登機回台。
                     </p>
                 </div>
-                <!-- 請依據您的行程增加或修改更多天數 -->
+                </div>
+        </section>
+
+        <section id="transportation" class="mb-12">
+            <h3 class="text-3xl font-bold text-center mb-8 text-[#8a5cf6]">交通建議</h3>
+            <div class="space-y-8">
+                <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
+                    <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第一天</h4>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>**成田機場 → 上野飯店:** 搭乘 **Skyliner (京成電鐵)**。這是最快的方式，約 45 分鐘抵達上野站。</li>
+                        <li>**上野 → 淺草:** 搭乘 **東京地鐵銀座線**，約 5 分鐘。</li>
+                        <li>**淺草 → 晴空塔:** 可步行（約 20 分鐘）或搭乘 **東武晴空塔線**，一站即達。</li>
+                        <li>**晴空塔 → 飯店:** 搭乘 **東武晴空塔線** 至淺草，轉乘 **東京地鐵銀座線** 至上野，步行回飯店。</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
+                    <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第二天</h4>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>**上野飯店 → 築地市場:** 搭乘 **東京地鐵日比谷線** 至築地站，步行即可抵達。</li>
+                        <li>**築地市場 → 秋葉原:** 搭乘 **東京地鐵日比谷線** 至秋葉原站。</li>
+                        <li>**秋葉原 → 銀座:** 搭乘 **JR山手線** 至有樂町站，步行至銀座。</li>
+                        <li>**銀座 → 飯店:** 搭乘 **東京地鐵銀座線** 或 **日比谷線** 回上野。</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
+                    <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第三天</h4>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>**上野 → 東京迪士尼:** 從上野搭乘 **JR京濱東北線** 或 **JR山手線** 到東京站，轉搭 **JR京葉線** 到舞濱站。</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
+                    <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第四天</h4>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>**上野 → 新宿:** 搭乘 **JR山手線** 或 **東京地鐵日比谷線** 轉乘。</li>
+                        <li>**新宿 → 澀谷:** 搭乘 **JR山手線**，約 5-7 分鐘。</li>
+                        <li>**澀谷 → 池袋:** 搭乘 **JR山手線**，約 10-15 分鐘。</li>
+                        <li>**池袋 → 飯店:** 搭乘 **JR山手線** 回上野。</li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-2xl p-6 shadow-lg transform transition-transform hover:scale-105">
+                    <h4 class="text-2xl font-semibold mb-4 border-b pb-2 text-[#4a90e2]">第五天</h4>
+                    <ul class="text-gray-700 space-y-2">
+                        <li>**上野 → 成田機場:** 搭乘 **Skyliner (京成電鐵)**，約 45 分鐘抵達。</li>
+                    </ul>
+                </div>
             </div>
         </section>
 
-        <!-- 必去景點區塊 -->
         <section id="attractions" class="mb-12">
             <h3 class="text-3xl font-bold text-center mb-8 text-[#8a5cf6]">必去景點</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 淺草寺 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://res-2.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1675339920/tokyo/Tokyo_s_id19_18" alt="淺草寺" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -148,7 +178,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 晴空塔 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://www.newamazing.com.tw/eweb_newamazing/japan/tokyo/images/tokyo-skytree/tokyo-skytree-04.jpg" alt="晴空塔" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -158,7 +187,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 築地場外市場 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://www.funtime.com.tw/blog/wp-content/uploads/2018/08/1-11.jpg" alt="築地場外市場" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -168,7 +196,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 秋葉原 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://static.gltjp.com/glt/data/article/21000/20306/20230428_135124_b546c095_w1920.webp" alt="秋葉原" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -178,7 +205,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 銀座 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://d1grca2t3zpuug.cloudfront.net/2024/08/66c4548850152-870x500.webp" alt="銀座" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -188,7 +214,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- Nagano Market Ginza -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://gcp-obs.line-scdn.net/0hxmncA7zCJ0JTGjbO1ZpYFWhMKzNgbyNEKCg1OiYdKXErLmJBc3puICYGfHcpLHwcZy49OHQfcHopeTURaXxudg" alt="Nagano Market Ginza" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -198,7 +223,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 東京迪士尼 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://res-1.cloudinary.com/jnto/image/upload/w_2064,h_1300,c_fill,f_auto,fl_lossy,q_auto/v1645708829/chiba/H_00336_001" alt="東京迪士尼" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -208,7 +232,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 新宿御苑 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Shinjuku_Gyoen_National_Garden_-_sakura_3.JPG/1200px-Shinjuku_Gyoen_National_Garden_-_sakura_3.JPG" alt="新宿御苑" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -218,7 +241,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 澀谷十字路口 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://assets.funliday.com/posts/wp-content/uploads/2024/08/04180133/main.jpg.pagespeed.ce_.7kqaore2sF-1024x576.jpg" alt="澀谷十字路口" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -228,7 +250,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- Sunshine City -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://minniewu.net/wp-content/uploads/20200123033907_48.jpg" alt="Sunshine City" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -238,7 +259,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 阿美橫丁 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://static.gltjp.com/glt/data/article/21000/20604/20240127_170506_1fb1a47e_w1920.webp" alt="阿美橫丁" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -248,7 +268,6 @@
                         </p>
                     </div>
                 </div>
-                <!-- 上野公園 -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform transition-transform hover:scale-105">
                     <img src="https://static.gltjp.com/glt/data/article/21000/20394/20230831_131736_902a620c_w1920.webp" alt="上野公園" class="w-full h-48 object-cover">
                     <div class="p-6">
@@ -261,32 +280,27 @@
             </div>
         </section>
 
-        <!-- 美食推薦區塊 -->
         <section id="food" class="mb-12">
             <h3 class="text-3xl font-bold text-center mb-8 text-[#8a5cf6]">美食推薦</h3>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- 淺草今半 -->
                 <div class="bg-white rounded-2xl shadow-lg p-6 transform transition-transform hover:scale-105">
                     <h4 class="text-xl font-semibold mb-2 text-[#4a90e2]">淺草：今半壽喜燒</h4>
                     <p class="text-gray-700 text-sm">
                         經典的壽喜燒名店，享用高品質的和牛，建議提前預約。
                     </p>
                 </div>
-                <!-- 秋葉原午餐推薦 -->
                 <div class="bg-white rounded-2xl shadow-lg p-6 transform transition-transform hover:scale-105">
                     <h4 class="text-xl font-semibold mb-2 text-[#4a90e2]">秋葉原午餐</h4>
                     <p class="text-gray-700 text-sm">
                         可以試試**牛かつもと村 (炸牛排)**，或是**まぐろ問屋 三浦三崎港 (迴轉壽司)**，都是當地人氣店家。
                     </p>
                 </div>
-                <!-- 銀座晚餐推薦 -->
                 <div class="bg-white rounded-2xl shadow-lg p-6 transform transition-transform hover:scale-105">
                     <h4 class="text-xl font-semibold mb-2 text-[#4a90e2]">銀座晚餐</h4>
                     <p class="text-gray-700 text-sm">
                         想要體驗米其林推薦的拉麵，可以去**篝 (Ginza Kagari)**。若想嘗試洋食，**煉瓦亭 (Rengatei)** 的蛋包飯也很值得一試。
                     </p>
                 </div>
-                <!-- 新宿/澀谷/池袋美食 -->
                 <div class="bg-white rounded-2xl shadow-lg p-6 transform transition-transform hover:scale-105">
                     <h4 class="text-xl font-semibold mb-2 text-[#4a90e2]">新宿/澀谷/池袋美食</h4>
                     <p class="text-gray-700 text-sm">
@@ -295,8 +309,7 @@
                         池袋：**無敵家拉麵**（排隊人氣拉麵店）。
                     </p>
                 </div>
-                 <!-- 上野/阿美橫丁美食 -->
-                <div class="bg-white rounded-2xl shadow-lg p-6 transform transition-transform hover:scale-105">
+                 <div class="bg-white rounded-2xl shadow-lg p-6 transform transition-transform hover:scale-105">
                     <h4 class="text-xl font-semibold mb-2 text-[#4a90e2]">上野/阿美橫丁美食</h4>
                     <p class="text-gray-700 text-sm">
                         **肉の大山**（美味炸肉餅/串燒）、**山家**（平價串燒店），或在阿美橫丁找新鮮海產和章魚燒等小吃。
@@ -305,7 +318,6 @@
             </div>
         </section>
 
-        <!-- 頁尾 -->
         <footer class="text-center text-gray-500 py-8">
             <p>準備好一起創造美好的回憶了嗎？期待我們的旅程！</p>
             <p>&copy; 2025 我們的旅行小隊</p>
@@ -313,5 +325,3 @@
     </main>
 </body>
 </html>
-
-
