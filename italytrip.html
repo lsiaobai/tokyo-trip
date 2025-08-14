@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14天義大利與巴黎浪漫之旅</title>
+    <!-- 引入 Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* 自定義滾動條樣式，讓頁面更美觀 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+        /* 每日行程時間軸樣式 */
+        .timeline-container {
+            position: relative;
+            padding-left: 24px; /* 留出空間給時間軸線 */
+        }
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 8px;
+            width: 2px;
+            height: 100%;
+            background: #d1d5db; /* 灰色線條 */
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 24px;
+        }
+        .timeline-dot {
+            content: '';
+            position: absolute;
+            top: 4px;
+            left: 0;
+            width: 18px;
+            height: 18px;
+            background: #fff;
+            border: 2px solid #3b82f6; /* 藍色圓點 */
+            border-radius: 50%;
+            z-index: 10;
+        }
+        .timeline-content {
+            padding-left: 16px;
+        }
+        /* 讓地圖iframe能響應式顯示 */
+        .map-container {
+            overflow: hidden;
+            padding-bottom: 56.25%; /* 16:9 比例 */
+            position: relative;
+            height: 0;
+            border-radius: 1.5rem;
+        }
+        .map-container iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- 首頁 - 旅程精華概覽 -->
+    <!-- 使用旅行主題的圖片作為背景 -->
+    <header class="relative h-screen bg-cover bg-center" style="background-image: url('https://source.unsplash.com/1920x1080/?travel,europe,romance');">
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center text-center">
+            <div class="space-y-4 px-6 md:px-0">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight">14天義大利與巴黎浪漫之旅</h1>
+                <p class="text-xl md:text-2xl text-gray-200 font-light">從羅馬古蹟到巴黎鐵塔，一場跨越時空的歐洲漫遊</p>
+                <div class="mt-8 flex flex-wrap justify-center gap-4">
+                    <!-- 快速跳轉錨點，方便瀏覽 -->
+                    <a href="#rome" class="inline-block bg-white text-gray-800 font-bold py-2 px-4 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">羅馬</a>
+                    <a href="#florence" class="inline-block bg-white text-gray-800 font-bold py-2 px-4 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">佛羅倫斯</a>
+                    <a href="#venice" class="inline-block bg-white text-gray-800 font-bold py-2 px-4 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">威尼斯</a>
+                    <a href="#milan" class="inline-block bg-white text-gray-800 font-bold py-2 px-4 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">米蘭</a>
+                    <a href="#paris" class="inline-block bg-white text-gray-800 font-bold py-2 px-4 rounded-full shadow-lg hover:bg-gray-200 transition duration-300">巴黎</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主內容區塊 -->
+    <main class="container mx-auto px-4 py-12 md:py-16 space-y-20">
+
+        <!-- 羅馬篇 -->
+        <section id="rome" class="bg-white rounded-3xl shadow-xl p-8 md:p-12 transition-transform transform hover:scale-105 duration-300">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 border-orange-400 pb-2">羅馬：永恆之城的時光迴廊 (第1-4天)</h2>
+            <p class="text-lg text-gray-600 mb-8">羅馬是旅程的起點，這裡充滿了震撼人心的歷史古蹟與文化遺產。準備好穿越回古羅馬帝國了嗎？</p>
+
+            <!-- 每日行程 - 以時間軸呈現 -->
+            <div class="space-y-8 mt-10">
+                <h3 class="text-2xl font-bold text-orange-600 mb-4">每日行程</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-orange-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第一天：古羅馬帝國的震撼</h4>
+                            <p class="mt-1 text-gray-600">抵達羅馬，入住後前往羅馬競技場與古羅馬廣場，感受歷史的磅礡。傍晚則漫步至威尼斯廣場。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-orange-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第二天：梵蒂岡一日遊</h4>
+                            <p class="mt-1 text-gray-600">一整天都獻給梵蒂岡！參觀梵蒂岡博物館和聖彼得大教堂，別忘了登上大教堂頂端俯瞰羅馬。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-orange-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第三天：許願池與萬神殿</h4>
+                            <p class="mt-1 text-gray-600">拋下一枚硬幣在特雷維噴泉許願，再到萬神殿欣賞古羅馬的建築智慧，最後在納沃納廣場悠閒漫步。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-orange-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第四天：購物與悠閒時光</h4>
+                            <p class="mt-1 text-gray-600">在西班牙廣場的台階上稍作休息，逛逛周邊的精品街，為佛羅倫斯之行做準備。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 美食筆記 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-orange-600 mb-4">美食筆記</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**必嚐：** 羅馬式薄脆披薩、Cacio e Pepe 義大利麵、炸朝鮮薊、義式冰淇淋 (Gelato)。</li>
+                    <li>**餐廳建議：** <a href="https://www.google.com/maps/place/Da+Enzo+al+29/" target="_blank" class="text-blue-500 hover:underline">Da Enzo al 29</a> (道地羅馬菜)、<a href="https://www.google.com/maps/place/Il+Gelato+di+San+Crispino/" target="_blank" class="text-blue-500 hover:underline">Il Gelato di San Crispino</a> (羅馬最棒的冰淇淋店之一)。</li>
+                </ul>
+            </div>
+
+            <!-- 注意事項 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-red-600 mb-4">注意事項</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**預先購票：** 羅馬競技場和梵蒂岡博物館的門票建議提早線上預訂，可省下排隊時間。</li>
+                    <li>**小心扒手：** 在人潮眾多的景點（如許願池、競技場），務必隨時注意個人財物。</li>
+                    <li>**舒適鞋子：** 羅馬的街道多為石板路，強烈建議穿著舒適好走的鞋子。</li>
+                </ul>
+            </div>
+            
+            <!-- 照片集 - 調整圖片尺寸為統一的 16:9 比例 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-orange-600 mb-4">照片集</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- 使用 aspect-video (16:9) 確保圖片比例統一 -->
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Colosseo_2020.jpg/1200px-Colosseo_2020.jpg" alt="羅馬競技場照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Trevi_Fountain_-_Roma.jpg" alt="特雷維噴泉照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://www.upmedia.mg/upload/article/20180906174947162192.jpeg" alt="羅馬街景照片" class="h-full w-full object-cover">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 城市地圖 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-orange-600 mb-4">城市地圖</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38090.72583271616!2d12.457813589417833!3d41.90278351543666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132f6196f9928ebb%3A0xb90f195f4e5e494b!2sRome%2C%20Metropolitan%20City%20of%20Rome%2C%20Italy!5e0!3m2!1sen!2stw!4v1700689998188!5m2!1sen!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-3xl shadow-lg"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- 佛羅倫斯篇 -->
+        <section id="florence" class="bg-white rounded-3xl shadow-xl p-8 md:p-12 transition-transform transform hover:scale-105 duration-300">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 border-blue-400 pb-2">佛羅倫斯：文藝復興的藝術之心 (第5-7天)</h2>
+            <p class="text-lg text-gray-600 mb-8">這裡曾是文藝復興的發源地，大衛像與聖母百花大教堂的藝術光芒將讓你目不暇給。</p>
+
+            <!-- 每日行程 - 以時間軸呈現 -->
+            <div class="space-y-8 mt-10">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">每日行程</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-blue-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第五天：文藝復興的藝術中心</h4>
+                            <p class="mt-1 text-gray-600">抵達佛羅倫斯，先參觀聖母百花大教堂，並登上圓頂或鐘樓，欣賞城市壯麗的全景。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-blue-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第六天：大衛像與烏菲茲美術館</h4>
+                            <p class="mt-1 text-gray-600">上午到學院美術館與大衛像相見，下午則沉浸在烏菲茲美術館的藝術殿堂。傍晚別忘了到米開朗基羅廣場看日落。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-blue-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第七天：時尚與古橋</h4>
+                            <p class="mt-1 text-gray-600">穿過老橋，欣賞兩側獨特的珠寶店。下午可以選擇到比薩半日遊，或是輕鬆逛逛市區。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 美食筆記 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">美食筆記</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**必嚐：** 佛羅倫斯T骨牛排（Bistecca alla Fiorentina）、牛肚包（Lampredotto）。</li>
+                    <li>**餐廳建議：** <a href="https://www.google.com/maps/place/Trattoria+Mario/" target="_blank" class="text-blue-500 hover:underline">Trattoria Mario</a> (傳統托斯卡尼菜)、<a href="https://www.google.com/maps/place/Mercato+Centrale/" target="_blank" class="text-blue-500 hover:underline">中央市場</a> (多樣美食選擇)。</li>
+                </ul>
+            </div>
+
+            <!-- 注意事項 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-red-600 mb-4">注意事項</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**博物館預訂：** 烏菲茲美術館和學院美術館的門票非常搶手，建議提前一個月以上預訂。</li>
+                    <li>**大教堂登頂：** 聖母百花大教堂的圓頂登頂也需要提前預約。</li>
+                    <li>**觀光人潮：** 佛羅倫斯舊城區人潮眾多，要留意隨身物品，避免扒手。</li>
+                </ul>
+            </div>
+
+            <!-- 照片集 - 調整圖片尺寸為統一的 16:9 比例 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">照片集</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/View_of_Santa_Maria_del_Fiore_in_Florence.jpg/1200px-View_of_Santa_Maria_del_Fiore_in_Florence.jpg" alt="聖母百花大教堂照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Ponte_Vecchio_from_Ponte_alle_Grazie.jpg/960px-Ponte_Vecchio_from_Ponte_alle_Grazie.jpg" alt="老橋照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQJdXxyrVOOvBtHbOQq3Jp5Up3PzZOCHvwtOA&s" alt="佛羅倫斯藝術照片" class="h-full w-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 城市地圖 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-blue-600 mb-4">城市地圖</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2882.261908906752!2d11.2503254!3d43.7711462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x132a56a64d1f8857%3A0xc319208a0d2f099c!2sFlorence%2C%20Metropolitan%20City%20of%20Florence%2C%20Italy!5e0!3m2!1sen!2stw!4v1700690022283!5m2!1sen!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-3xl shadow-lg"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- 威尼斯篇 -->
+        <section id="venice" class="bg-white rounded-3xl shadow-xl p-8 md:p-12 transition-transform transform hover:scale-105 duration-300">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 border-purple-400 pb-2">威尼斯：漂浮在水上的夢幻國度 (第8-9天)</h2>
+            <p class="text-lg text-gray-600 mb-8">迷人的水道、貢多拉和歷史悠久的廣場，威尼斯充滿了獨特的浪漫與魅力。</p>
+
+            <!-- 每日行程 - 以時間軸呈現 -->
+            <div class="space-y-8 mt-10">
+                <h3 class="text-2xl font-bold text-purple-600 mb-4">每日行程</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-purple-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第八天：水都的浪漫之旅</h4>
+                            <p class="mt-1 text-gray-600">搭乘水上巴士抵達威尼斯，在聖馬可廣場感受熱鬧氛圍，並參觀總督宮和聖馬可大教堂。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-purple-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第九天：貢多拉與迷宮小巷</h4>
+                            <p class="mt-1 text-gray-600">體驗一次經典的貢多拉之旅，然後漫步在威尼斯蜿蜒的小巷中，尋找驚喜。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 美食筆記 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-purple-600 mb-4">美食筆記</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**必嚐：** 墨魚麵、Cicchetti（威尼斯小吃）、提拉米蘇。</li>
+                    <li>**餐廳建議：** <a href="https://www.google.com/maps/place/All'Arco/" target="_blank" class="text-blue-500 hover:underline">All'Arco</a> (當地人氣小酒館)。</li>
+                </ul>
+            </div>
+
+            <!-- 注意事項 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-red-600 mb-4">注意事項</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**交通工具：** 威尼斯主要的交通工具是水上巴士（Vaporetto），建議購買一日或多日券較划算。</li>
+                    <li>**貢多拉價格：** 貢多拉的價格通常較高，可以考慮與其他旅客共乘分攤費用。</li>
+                    <li>**旅遊高峰：** 聖馬可廣場在旅遊旺季和漲潮時人潮眾多，要特別留意。</li>
+                </ul>
+            </div>
+
+            <!-- 照片集 - 調整圖片尺寸為統一的 16:9 比例 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-purple-600 mb-4">照片集</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://cdn-imgix.headout.com/media/images/0f7a290f8d7a98b03a00260b934e95af-9182-venice-private-gondola-ride-02.jpg?auto=format&w=1222.3999999999999&h=687.6&q=90&ar=16%3A9&crop=faces&fit=crop" alt="威尼斯貢多拉照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBkWoeVl4md7RZCVPJHSLT5BvQQZEmOiGPfQ&s" alt="里亞爾托橋照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7k4NJ6jI0Jfs_0WwToR7xM9Wv-UIth3yX7Q&s" alt="威尼斯運河照片" class="h-full w-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 城市地圖 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-purple-600 mb-4">城市地圖</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28703.111867160395!2d12.30210214304899!3d45.44146036357917!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47781b22557e50c1%3A0x6b87640c4989600a!2sVenice%20Metropolitan%20City%20of%20Venice%20Italy!5e0!3m2!1sen!2stw!4v1700690044621!5m2!1sen!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-3xl shadow-lg"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- 米蘭篇 -->
+        <section id="milan" class="bg-white rounded-3xl shadow-xl p-8 md:p-12 transition-transform transform hover:scale-105 duration-300">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 border-teal-400 pb-2">米蘭：時尚與藝術的交匯點 (第10-11天)</h2>
+            <p class="text-lg text-gray-600 mb-8">米蘭不僅是時尚之都，其宏偉的大教堂和豐富的藝術氛圍也令人印象深刻。</p>
+
+            <!-- 每日行程 - 以時間軸呈現 -->
+            <div class="space-y-8 mt-10">
+                <h3 class="text-2xl font-bold text-teal-600 mb-4">每日行程</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-teal-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第十天：時尚之都的震撼</h4>
+                            <p class="mt-1 text-gray-600">抵達米蘭，直奔米蘭大教堂，並登上教堂頂端欣賞城市風光。然後漫步在艾曼紐二世迴廊，感受時尚氛圍。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-teal-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第十一天：藝術與購物</h4>
+                            <p class="mt-1 text-gray-600">參觀史豐哲城堡，然後在米蘭時尚四角區享受購物樂趣。晚上準備前往巴黎。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 美食筆記 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-teal-600 mb-4">美食筆記</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**必嚐：** 米蘭燉飯、炸肉排。</li>
+                    <li>**餐廳建議：** <a href="https://www.google.com/maps/place/Giacomo+Arengario/" target="_blank" class="text-blue-500 hover:underline">Giacomo Arengario</a> (可一邊用餐一邊欣賞大教堂美景)。</li>
+                </ul>
+            </div>
+
+            <!-- 注意事項 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-red-600 mb-4">注意事項</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**預訂機票：** 達文西的《最後的晚餐》畫作參觀，需要非常早（可能提前幾個月）預訂。</li>
+                    <li>**大教堂登頂：** 米蘭大教堂登頂需要額外購票，可以選擇電梯或樓梯。</li>
+                    <li>**交通工具：** 米蘭的市區交通很方便，地鐵和路面電車是很好的選擇。</li>
+                </ul>
+            </div>
+
+            <!-- 照片集 - 調整圖片尺寸為統一的 16:9 比例 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-teal-600 mb-4">照片集</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKR5TfYfHYO1K7_MS-7zq8VYg2JUDUS613nQ&s" alt="米蘭大教堂照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b6/Galleria_Milano_%28179532365%29.jpeg" alt="艾曼紐二世迴廊照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/05/10/e1/5e/castello-sforzesco.jpg?w=900&h=500&s=1" alt="史豐哲城堡照片" class="h-full w-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 城市地圖 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-teal-600 mb-4">城市地圖</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d22432.22237937402!2d9.183701625902166!3d45.46466430349472!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c65b53d8650f%3A0xc68297a731ae56b9!2sMilan%2C%20Metropolitan%20City%20of%20Milan%2C%20Italy!5e0!3m2!1sen!2stw!4v1700690065095!5m2!1sen!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-3xl shadow-lg"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- 巴黎篇 -->
+        <section id="paris" class="bg-white rounded-3xl shadow-xl p-8 md:p-12 transition-transform transform hover:scale-105 duration-300">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 border-b-2 border-pink-400 pb-2">巴黎：花都的浪漫邂逅 (第12-14天)</h2>
+            <p class="text-lg text-gray-600 mb-8">旅程的最後一站，在充滿浪漫氣息的巴黎劃下完美句點。鐵塔、羅浮宮和塞納河畔將帶給你難忘的回憶。</p>
+
+            <!-- 每日行程 - 以時間軸呈現 -->
+            <div class="space-y-8 mt-10">
+                <h3 class="text-2xl font-bold text-pink-600 mb-4">每日行程</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-pink-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第十二天：香榭麗舍的浪漫</h4>
+                            <p class="mt-1 text-gray-600">從米蘭抵達巴黎，先參觀艾菲爾鐵塔，然後沿著香榭麗舍大道漫步，感受巴黎的優雅氣息。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-pink-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第十三天：羅浮宮與塞納河畔</h4>
+                            <p class="mt-1 text-gray-600">花半天時間參觀世界級的羅浮宮，接著在塞納河畔漫步，欣賞巴黎聖母院（外觀）。</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot bg-pink-500"></div>
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-xl text-gray-900">第十四天：再見，巴黎</h4>
+                            <p class="mt-1 text-gray-600">依據班機時間，自由活動，最後前往機場，帶著滿滿的回憶返國。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 美食筆記 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-pink-600 mb-4">美食筆記</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**必嚐：** 法國長棍麵包、可頌、法式薄餅、法式洋蔥湯。</li>
+                    <li>**餐廳建議：** 在艾菲爾鐵塔附近或羅浮宮周邊有很多小酒館和咖啡廳可供選擇。</li>
+                </ul>
+            </div>
+
+            <!-- 注意事項 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-red-600 mb-4">注意事項</h3>
+                <ul class="list-disc list-inside space-y-2 text-gray-600">
+                    <li>**預先購票：** 艾菲爾鐵塔和羅浮宮的門票建議在官網提前購買，可節省大量排隊時間。</li>
+                    <li>**交通卡：** 巴黎地鐵票種類繁多，建議根據行程購買適合的交通卡，並在搭乘前確實驗票。</li>
+                    <li>**小心扒手：** 巴黎是扒手的高發地，尤其在羅浮宮、艾菲爾鐵塔等熱門景點，務必看好隨身物品。</li>
+                </ul>
+            </div>
+
+            <!-- 照片集 - 調整圖片尺寸為統一的 16:9 比例 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-pink-600 mb-4">照片集</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://planetrail.co.uk/wp-content/uploads/Eiffel-Tower-Paris-resized.jpg" alt="巴黎艾菲爾鐵塔照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://eyexplore.blog/wp-content/uploads/2023/02/most-beautiful-paris-louvre-GettyImages-536267205.webp" alt="羅浮宮照片" class="h-full w-full object-cover">
+                    </div>
+                    <div class="aspect-video overflow-hidden rounded-xl shadow-lg">
+                        <img src="https://www.parisperfect.com/g/photos/upload/sml_574829411-1482968041-Seine-HERO.jpg" alt="巴黎塞納河畔照片" class="h-full w-full object-cover">
+                    </div>
+                </div>
+            </div>
+
+            <!-- 城市地圖 -->
+            <div class="mt-10">
+                <h3 class="text-2xl font-bold text-pink-600 mb-4">城市地圖</h3>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20993.42845347262!2d2.290533036484196!3d48.8588820461019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66e2964e34e2d%3A0x8ddca9ee2ac0c80b!2sParis%2C%20France!5e0!3m2!1sen!2stw!4v1700690085465!5m2!1sen!2stw" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="rounded-3xl shadow-lg"></iframe>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 頁尾 -->
+    <footer class="bg-gray-200 text-center py-8">
+        <p class="text-gray-600 font-medium">感謝你的旅程！期待你的獨家回憶分享。</p>
+    </footer>
+
+    <!-- 回到頂端浮動按鈕 -->
+    <button id="backToTopBtn" class="fixed bottom-8 right-8 z-50 p-4 bg-blue-500 text-white rounded-full shadow-lg hover:bg-blue-600 transition-all duration-300 transform scale-100 hover:scale-105 hidden" aria-label="回到頂端">
+        <!-- SVG icon for a simple arrow up -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 取得「回到頂端」按鈕的元素
+            const backToTopBtn = document.getElementById('backToTopBtn');
+
+            // 監聽頁面滾動事件
+            window.addEventListener('scroll', () => {
+                // 如果頁面滾動超過 300px，就顯示按鈕
+                if (window.scrollY > 300) {
+                    backToTopBtn.classList.remove('hidden');
+                } else {
+                    backToTopBtn.classList.add('hidden');
+                }
+            });
+
+            // 監聽按鈕點擊事件，讓頁面平滑滾動回頂端
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
